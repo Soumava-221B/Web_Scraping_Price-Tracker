@@ -1,7 +1,19 @@
 "use client";
 
+import { FormEvent, useState } from "react";
+
+const isValidAmazonProductURL = (url: string) => {
+
+}
+
 const Searchbar = () => {
-  const handleSubmit = () => {};
+  const [searchPrompt, setSearchPrompt] = useState('');
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const isValidLink = isValidAmazonProductURL(searchPrompt);
+  };
 
   return (
     <form 
@@ -10,6 +22,8 @@ const Searchbar = () => {
     >
       <input 
        type="text"
+       value={searchPrompt}
+       onChange={(e) => setSearchPrompt(e.target.value)}
        placeholder="Enter the product link"
        className="searcbar-input" 
       />
